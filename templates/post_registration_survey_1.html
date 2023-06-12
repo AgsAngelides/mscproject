@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+         .container {
+         padding: 20px;
+         }
+         .frame {
+         padding-left: 15px;
+         padding-right: 15px;
+         padding-bottom: 50px;
+         padding-top: 25px;
+         width: 50%;
+         background: rgba(217, 217, 217, 0.8);
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         margin: auto;
+         }
+         .title {
+         height: 25px;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 20px;
+         line-height: 23px;
+         color: #000000;
+         }
+         .form_label {
+         height: 50px;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 400;
+         font-size: 16px;
+         line-height: 25px;
+         color: #000000;
+         }
+         .submit_button {
+         position: relative;
+         margin-left: auto;
+         margin-right: auto;
+         margin-top: 20px;
+         height: 34px;
+         background: #9D5135;
+         border-radius: 10px;
+         border: none;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 16px;
+         line-height: 19px;
+         color: #FFFFFF;
+         padding-left: 15px;
+         padding-right: 15px;
+         }
+         .box textarea {
+         resize: vertical;
+         width: 100%;
+         width: 100%;
+         flex-grow: 1;
+         margin-bottom: 10px;
+         border: none;
+         border-radius: 10px;
+         }
+         textarea:focus {
+         outline: none;
+         }
+         .notification {
+          background-color: rgb(125, 166, 125);
+          font-family: 'Roboto';
+          color: white;
+          font-size: 14px;
+          padding: 10px 5px 10px 10px;
+          border-radius: 10px;
+          margin-bottom: 40px;
+          font-weight: 500;
+         }
+         textarea {
+          color:#9D5135;
+          padding: 5px;
+         }
+         /* Styles for mobile browsers */
+         @media screen and (max-width: 600px) {
+         .container {        
+         padding: 0px;
+         }
+         .frame {
+         width: 100%;
+         padding: 5px;
+         left: 0px;
+         }
+         .box textarea {
+         width: 100%;
+         max-width: 100%;
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container frame">
+         <div class="notification">Congratulations, you have successfully registered!</div>
+         <h1 class="title">Post-registration survey</h1>
+         <form action="{{ url_for('post_registration_survey_1') }}" method="POST">
+            <div class="box">
+               <label for="overall_experience" class="form_label">How would you describe your overall registration experience?</label><br>
+               <textarea id="overall_experience" name="overall_experience" rows="4" cols="90"></textarea><br>
+            </div>
+            <div class="box">
+               <label for="reg_frustration" class="form_label">What, if anything, caused you frustration?</label><br>
+               <textarea id="reg_frustration" name="reg_frustration" rows="4" cols="90"></textarea><br>
+            </div>
+            <div style="text-align: center;">
+               <input type="submit" class="submit_button" value="SUBMIT">
+            </div>
+         </form>
+      </div>
+   </body>
+</html>

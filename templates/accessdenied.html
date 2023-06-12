@@ -1,0 +1,94 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+         *, *:before, *:after {
+         box-sizing: border-box;
+         }
+         html {
+         height: 100%;
+         }
+         body {
+         font-family: 'Roboto';
+         background-color: rgba(217, 217, 217, 0.8);
+         height: 100%;
+         padding: 10px;
+         }
+         a {
+         color: white !important;
+         text-decoration:none;
+         }
+         .text-wrapper {
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         }
+         .title {
+         font-size: 5em;
+         font-weight: 700;
+         font-family: 'Roboto';
+         color: #9D5135;
+         padding: 10px;
+         }
+         .subtitle {
+         font-size: 40px;
+         font-weight: 700;
+         color: black;
+         }
+         .isi {
+         font-size: 18px;
+         text-align: center;
+         margin:30px;
+         padding:20px;
+         color: black;
+         }
+         .submit_button {
+         position: relative;
+         margin-left: auto;
+         margin-right: auto;
+         margin-top: 20px;
+         height: 34px;
+         background: #9D5135;
+         border-radius: 10px;
+         border: none;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 16px;
+         line-height: 19px;
+         color: #FFFFFF;
+         padding: 5px 15px 5px 15px;
+         }
+         @media screen and (max-width: 480px) {
+         .title {
+         font-size: 1.5em;
+         padding: 10px;
+         }
+         .subtitle {
+         font-size: 14px;
+         }
+         .isi {
+         font-size: 14px;
+         padding: 5px;
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="text-wrapper">
+         <div class="title" data-content="404">
+            403 - ACCESS DENIED
+         </div>
+         <div class="subtitle">
+            Oops, you are not authorised to access this page
+         </div>
+         <div class="isi">
+            A web server may return a 403 Forbidden HTTP status code in response to a request from a client for a web page or resource to indicate that the server can be reached and understood the request, but refuses to take any further action. Status code 403 responses are the result of the web server being configured to deny access, for some reason, to the requested resource by the client.
+         </div>
+         <form action="{{ url_for('consent') }}">
+         <input type="submit" class="submit_button" value="GO TO HOMEPAGE">
+      </div>
+   </body>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+         .container {
+         padding: 30px;
+         }
+         .frame {
+         padding-left: 15px;
+         padding-right: 15px;
+         padding-bottom: 50px;
+         padding-top: 25px;
+         width: 50%;
+         background: rgba(217, 217, 217, 0.8);
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         margin: auto;
+         }
+         .title {
+         height: 25px;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 20px;
+         line-height: 23px;
+         color: #000000;
+         }
+         .submit_button {
+         position: relative;
+         margin-left: auto;
+         margin-right: auto;
+         margin-top: 20px;
+         height: 34px;
+         background: #9D5135;
+         border-radius: 10px;
+         border: none;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 16px;
+         line-height: 19px;
+         color: #FFFFFF;
+         }
+         .question_title {
+         height: 25px;
+         padding-bottom: 10px;
+         text-align: left;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 16px;
+         line-height: 25px;
+         color: #000000;
+         }
+         .option {
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 400;
+         font-size: 16px;
+         line-height: 25px;
+         color: #000000;
+         margin-bottom: 20px;
+         }
+         .grid_background {
+         background: rgba(255, 251, 247, 0.7);
+         border-radius: 10px;
+         padding: 5px;
+         }
+         .grid_column {
+         width: 75%;
+         font-weight: 700;
+         }
+         td, th {
+         padding-bottom: 10px;
+         line-height: 1.3;
+         font-family: 'Roboto';
+         text-align: left;
+         font-style: normal;
+         font-size: 16px;
+         color: #000000;
+         }
+         th:nth-child(2), td:nth-child(2), th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4) {
+         text-align: center;
+         vertical-align: top;
+         }
+         .break {
+         border-bottom: 20px solid black;
+         }
+         /* Styles for mobile browsers */
+         @media screen and (max-width: 600px) {
+         .container {
+         padding: 0px;
+         }
+         }
+         @media screen and (max-width: 600px) {
+         .frame {
+         width: 100%;
+         padding: 7px;
+         left: 0%;
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container frame">
+         <h1 class="title">Pre-registration survey</h1>
+         <form action="{{ url_for('pre_registration_survey') }}" method="POST">
+            <div class="option">
+               <label for="gender" class="question_title">Gender *</label><br>
+               <input type="radio" name="gender" value="female" required> Female<br>
+               <input type="radio" name="gender" value="male" required> Male<br>
+               <input type="radio" name="gender" value="other" required> Other<br>
+            </div>
+            <div class="option">
+               <label for="age" class="question_title">Age *</label><br>
+               <input type="radio" name="age" value="18_24" required> 18-24 years old <br>
+               <input type="radio" name="age" value="25_34" required> 25-34 years old <br>
+               <input type="radio" name="age" value="35_44" required> 35-44 years old <br>
+               <input type="radio" name="age" value="45_54" required> 45-54 years old <br>
+               <input type="radio" name="age" value="55_64" required> 55-64 years old <br>
+            </div>
+            <div class="option">
+               <label for="education" class="question_title">What is the highest level of education you have completed? *</label><br>
+               <input type="radio" name="education" value="primary_school" required> Primary School <br>
+               <input type="radio" name="education" value="secondary_school" required> Secondary school/GCSE (up to 16 years) or equivalent <br>
+               <input type="radio" name="education" value="college" required> College/A levels <br>
+               <input type="radio" name="education" value="undegraduate" required> Undergraduate degree <br>
+               <input type="radio" name="education" value="postgraduate" required> Postgraduate degree <br>
+               <input type="radio" name="education" value="phd" required> PhD <br>
+               <input type="radio" id="other" name="education" value="other" required> Other (please specify)<br>
+               <div id="other-option-text" style="display:none">
+                  <input type="text" id="other-option-text-input" name="other_specified">
+               </div>
+            </div>
+            <div class="option">
+               <label for="employment" class="question_title">What is your current employment status? *</label><br>
+               <input type="radio" name="employment" value="full_time" required> Full-time employment <br>
+               <input type="radio" name="employment" value="part_time" required> Part-time employment <br>
+               <input type="radio" name="employment" value="unemployed" required> Unemployed <br>
+               <input type="radio" name="employment" value="self_employed" required> Self-employed <br>
+               <input type="radio" name="employment" value="student" required> Student <br>
+               <input type="radio" name="employment" value="retired" required> Retired <br>
+            </div>
+            <p class="question_title">Please select Yes, No or Sometimes for every option in the table below.</p>
+            <table class="grid_background">
+               <thead>
+                  <tr>
+                     <th class="grid_column">Mobile devices</th>
+                     <th>Yes</th>
+                     <th>No</th>
+                     <th>Sometimes</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>I know how to connect to Wi-Fi on a mobile device</td>
+                     <td><input type="radio" name="lit_1" value="yes" required></td>
+                     <td><input type="radio" name="lit_1" value="no" required></td>
+                     <td><input type="radio" name="lit_1" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to download and install new apps</td>
+                     <td><input type="radio" name="lit_2" value="yes" required></td>
+                     <td><input type="radio" name="lit_2" value="no" required></td>
+                     <td><input type="radio" name="lit_2" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to turn my device on and off</td>
+                     <td><input type="radio" name="lit_3" value="yes" required></td>
+                     <td><input type="radio" name="lit_3" value="no" required></td>
+                     <td><input type="radio" name="lit_3" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to track costs of the mobile app use</td>
+                     <td><input type="radio" name="lit_4" value="yes" required></td>
+                     <td><input type="radio" name="lit_4" value="no" required></td>
+                     <td><input type="radio" name="lit_4" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to set up and use a hotspot</td>
+                     <td><input type="radio" name="lit_5" value="yes" required></td>
+                     <td><input type="radio" name="lit_5" value="no" required></td>
+                     <td><input type="radio" name="lit_5" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td class="grid_column">Using internet</td>
+                     <td><b>Yes</b></td>
+                     <td><b>No</b></td>
+                     <td><b>Sometimes</b></td>
+                  </tr>
+                  <tr>
+                     <td>I know how use search engines such as Google</td>
+                     <td><input type="radio" name="lit_6" value="yes" required></td>
+                     <td><input type="radio" name="lit_6" value="no" required></td>
+                     <td><input type="radio" name="lit_6" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to refresh a webpage</td>
+                     <td><input type="radio" name="lit_7" value="yes" required></td>
+                     <td><input type="radio" name="lit_7" value="no" required></td>
+                     <td><input type="radio" name="lit_7" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how the bookmarks work and where to find them</td>
+                     <td><input type="radio" name="lit_8" value="yes" required></td>
+                     <td><input type="radio" name="lit_8" value="no" required></td>
+                     <td><input type="radio" name="lit_8" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to download files/images I found online</td>
+                     <td><input type="radio" name="lit_9" value="yes" required></td>
+                     <td><input type="radio" name="lit_9" value="no" required></td>
+                     <td><input type="radio" name="lit_9" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to upload files, e.g. Dropbox, Google Drive</td>
+                     <td><input type="radio" name="lit_10" value="yes" required></td>
+                     <td><input type="radio" name="lit_10" value="no" required></td>
+                     <td><input type="radio" name="lit_10" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to accept/reject cookies</td>
+                     <td><input type="radio" name="lit_11" value="yes" required></td>
+                     <td><input type="radio" name="lit_11" value="no" required></td>
+                     <td><input type="radio" name="lit_11" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to complete online forms, e.g. registration forms</td>
+                     <td><input type="radio" name="lit_12" value="yes" required></td>
+                     <td><input type="radio" name="lit_12" value="no" required></td>
+                     <td><input type="radio" name="lit_12" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know where and how to input an online webpage address without using search engines like Google</td>
+                     <td><input type="radio" name="lit_13" value="yes" required></td>
+                     <td><input type="radio" name="lit_13" value="no" required></td>
+                     <td><input type="radio" name="lit_13" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to locate and view my browsing history</td>
+                     <td><input type="radio" name="lit_14" value="yes" required></td>
+                     <td><input type="radio" name="lit_14" value="no" required></td>
+                     <td><input type="radio" name="lit_14" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td class="grid_column">Online information location skills</td>
+                     <td><b>Yes</b></td>
+                     <td><b>No</b></td>
+                     <td><b>Sometimes</b></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to use different strategies when searching for information online, e.g. different search engines, specific webpages, keyword searches, etc.</td>
+                     <td><input type="radio" name="lit_15" value="yes" required></td>
+                     <td><input type="radio" name="lit_15" value="no" required></td>
+                     <td><input type="radio" name="lit_15" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I usually look at more than the top three search results</td>
+                     <td><input type="radio" name="lit_16" value="yes" required></td>
+                     <td><input type="radio" name="lit_16" value="no" required></td>
+                     <td><input type="radio" name="lit_16" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I feel confident in my ability to determine if the website found can be trusted</td>
+                     <td><input type="radio" name="lit_17" value="yes" required></td>
+                     <td><input type="radio" name="lit_17" value="no" required></td>
+                     <td><input type="radio" name="lit_17" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I usually compare different websites to confirm the information found is correct</td>
+                     <td><input type="radio" name="lit_18" value="yes" required></td>
+                     <td><input type="radio" name="lit_18" value="no" required></td>
+                     <td><input type="radio" name="lit_18" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td class="grid_column">Online communication skills</td>
+                     <td><b>Yes</b></td>
+                     <td><b>No</b></td>
+                     <td><b>Sometimes</b></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to use social networking sites, such as Facebook, Twitter, etc.</td>
+                     <td><input type="radio" name="lit_19" value="yes" required></td>
+                     <td><input type="radio" name="lit_19" value="no" required></td>
+                     <td><input type="radio" name="lit_19" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to use email applications or email software</td>
+                     <td><input type="radio" name="lit_20" value="yes" required></td>
+                     <td><input type="radio" name="lit_20" value="no" required></td>
+                     <td><input type="radio" name="lit_20" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td class="grid_column">Online content creation skills</td>
+                     <td><b>Yes</b></td>
+                     <td><b>No</b></td>
+                     <td><b>Sometimes</b></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to upload my own video content online, for example, on Youtube</td>
+                     <td><input type="radio" name="lit_21" value="yes" required></td>
+                     <td><input type="radio" name="lit_21" value="no" required></td>
+                     <td><input type="radio" name="lit_21" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to write and comment online</td>
+                     <td><input type="radio" name="lit_22" value="yes" required></td>
+                     <td><input type="radio" name="lit_22" value="no" required></td>
+                     <td><input type="radio" name="lit_22" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to create something new from the existing online content such as images, videos, etc.</td>
+                     <td><input type="radio" name="lit_23" value="yes" required></td>
+                     <td><input type="radio" name="lit_23" value="no" required></td>
+                     <td><input type="radio" name="lit_23" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td class="grid_column">Desktop computers and laptops</td>
+                     <td><b>Yes</b></td>
+                     <td><b>No</b></td>
+                     <td><b>Sometimes</b></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to check for and install operating system updates</td>
+                     <td><input type="radio" name="lit_24" value="yes" required></td>
+                     <td><input type="radio" name="lit_24" value="no" required></td>
+                     <td><input type="radio" name="lit_24" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to download and install new software</td>
+                     <td><input type="radio" name="lit_25" value="yes" required></td>
+                     <td><input type="radio" name="lit_25" value="no" required></td>
+                     <td><input type="radio" name="lit_25" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to use popular software packages such as MS Office</td>
+                     <td><input type="radio" name="lit_26" value="yes" required></td>
+                     <td><input type="radio" name="lit_26" value="no" required></td>
+                     <td><input type="radio" name="lit_26" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to use software/apps that came with my computer/laptop such as the calculator, snipping tool, etc.</td>
+                     <td><input type="radio" name="lit_27" value="yes" required></td>
+                     <td><input type="radio" name="lit_27" value="no" required></td>
+                     <td><input type="radio" name="lit_27" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to use shortcut keys on personal computers and laptops, for example, CTRL-C</td>
+                     <td><input type="radio" name="lit_28" value="yes" required></td>
+                     <td><input type="radio" name="lit_28" value="no" required></td>
+                     <td><input type="radio" name="lit_28" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td class="grid_column">Security</td>
+                     <td><b>Yes</b></td>
+                     <td><b>No</b></td>
+                     <td><b>Sometimes</b></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to turn on firewall on my devices</td>
+                     <td><input type="radio" name="lit_29" value="yes" required></td>
+                     <td><input type="radio" name="lit_29" value="no" required></td>
+                     <td><input type="radio" name="lit_29" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to use an antivirus</td>
+                     <td><input type="radio" name="lit_30" value="yes" required></td>
+                     <td><input type="radio" name="lit_30" value="no" required></td>
+                     <td><input type="radio" name="lit_30" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to use VPNs</td>
+                     <td><input type="radio" name="lit_31" value="yes" required></td>
+                     <td><input type="radio" name="lit_31" value="no" required></td>
+                     <td><input type="radio" name="lit_31" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to safely connect and open USB devices</td>
+                     <td><input type="radio" name="lit_32" value="yes" required></td>
+                     <td><input type="radio" name="lit_32" value="no" required></td>
+                     <td><input type="radio" name="lit_32" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to safely download and install new software</td>
+                     <td><input type="radio" name="lit_33" value="yes" required></td>
+                     <td><input type="radio" name="lit_33" value="no" required></td>
+                     <td><input type="radio" name="lit_33" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to determine if it is safe to visit a website and download content from it</td>
+                     <td><input type="radio" name="lit_34" value="yes" required></td>
+                     <td><input type="radio" name="lit_34" value="no" required></td>
+                     <td><input type="radio" name="lit_34" value="sometimes" required></td>
+                  </tr>
+                  <tr>
+                     <td>I know how to change privacy settings on my online accounts</td>
+                     <td><input type="radio" name="lit_35" value="yes" required></td>
+                     <td><input type="radio" name="lit_35" value="no" required></td>
+                     <td><input type="radio" name="lit_35" value="sometimes" required></td>
+                  </tr>
+               </tbody>
+            </table>
+            <br>
+            <div style="text-align: center;">
+               <input type="submit" class="submit_button" value="SUBMIT">
+            </div>
+         </form>
+      </div>
+      <script>
+         var otherOption = document.getElementById("other");
+         var otherOptionText = document.getElementById("other-option-text");
+         var otherOptionTextInput = document.getElementById("other-option-text-input");
+         var radioButtons = document.querySelectorAll('input[name="education"]');
+         
+         for (var i = 0; i < radioButtons.length; i++) {
+             radioButtons[i].addEventListener("change", function() {
+                 if (otherOption.checked) {
+                     otherOptionText.style.display = "block";
+                 } else {
+                     otherOptionText.style.display = "none";
+                     otherOptionTextInput.value = "";
+                 }
+              });
+             }
+      </script>
+   </body>
+</html>

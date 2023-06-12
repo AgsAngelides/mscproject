@@ -1,0 +1,226 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	body {
+		background-image: url("https://i.ibb.co/m9ZKDdt/12.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	
+	.reg_frame {
+		margin-left: auto;
+		margin-right: auto;
+		top: 20px;
+		width: fit-content;
+		height: fit-content;
+		background: rgba(150, 142, 133, 0.7);
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 10px;
+		padding: 30px;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+	
+	.reg_frame form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+	}
+	
+	.alert {
+		width: 90%;
+		background-color: #f2dede;
+		border-color: #ebccd1;
+		color: #a94442;
+		padding: 8px;
+		margin-bottom: 15px;
+		font-family: 'Roboto';
+		font-size: 11px;
+		border: 1px solid transparent;
+		border-radius: 4px;
+	}
+	
+	.field_title {
+		height: 25px;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 19px;
+		color: #FFFFFF;
+	}
+	
+	.box {
+		width: 100%;
+		padding-top: 15px;
+	}
+	
+	.paragraph {
+		height: 137px;
+		width: 333px;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 12.5px;
+		line-height: 17px;
+		color: white;
+		padding-bottom: 20px;
+	}
+	
+	.submit_button {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		height: 34px;
+		background: #9D5135;
+		border-radius: 10px;
+		border: none;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 19px;
+		color: #FFFFFF;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	
+	.input-group-text {
+		font-family: 'Roboto';
+		color: white;
+		text-decoration: underline;
+		font-size: 12px;
+		padding-top: 10px;
+		padding-bottom: 15px;
+	}
+	
+	input[type=email],
+	input[type=password],
+	input[type=text] {
+		width: 100%;
+		height: 34px;
+		border: none;
+		background: #FFFFFF;
+		border-radius: 10px;
+		padding-left: 10px;
+		color: #9D5135;
+	}
+	
+	input::placeholder {
+		color: #9D5135;
+		font-style: italic;
+		font-family: 'Roboto';
+		padding-left: 0px;
+	}
+	
+	input:-webkit-autofill {
+		-webkit-text-fill-color: #9D5135;
+	}
+	
+	input:-webkit-autofill {
+		-webkit-text-fill-color: #9D5135;
+	}
+	
+	input[type="checkbox"] {
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		width: 16px;
+		height: 16px;
+		background-color: white;
+		outline: none;
+		vertical-align: middle;
+	}
+	
+	input[type="checkbox"]:checked::before {
+		content: "\2714";
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		text-align: center;
+		line-height: 16px;
+		font-size: 16px;
+		color: white;
+		background-color: #9D5135;
+		vertical-align: middle;
+	}
+	
+	@media screen and (max-width: 600px) {
+		.reg_frame {
+			padding: 10px;
+			position: unset;
+		}
+	}
+	
+	@media screen and (max-width: 600px) {
+		input[type=email],
+		input[type=password] {
+			width: 100%;
+			box-sizing: border-box;
+		}
+	}
+	</style>
+</head>
+
+<body>
+	<div class="reg_frame">
+		<form action="{{ url_for('register_1') }}" method="post"> {% if message is defined and message %}
+			<div class="alert alert-warning">{{ message }}</div>
+			<br> {% endif %}
+			<div class="box">
+				<label for="email" class="field_title"> Email address
+					<div style="color: #9D5135; display: inline-block;">*</div>
+				</label>
+				<br>
+				<input type="email" id="email" name="email" placeholder="Please enter your email address" name="email" required> </div>
+			<br>
+			<div class="box">
+				<label for="pwd" class="field_title"> Password
+					<div style="color: #9D5135; display: inline-block;">*</div>
+				</label>
+				<br>
+				<input type="password" id="password" name="password" placeholder="Please provide a password" name="pswd" required>
+				<div class="input-group-append">
+					<div class="input-group-text">
+						<input type="checkbox" onclick="togglePassword()"> Show password </div>
+				</div>
+			</div>
+			<div class="paragraph">
+				<p>Strong password suggestions:
+					<ul>
+						<li> Use passphrases made up of at least 3 words, for example:
+							<br>
+							<br>
+							<div style="color: #9D5135"><b>Cats and Dogs Are NOT Very Good at Physics</b></div>
+						</li>
+						<br>
+						<li>Aim for a minimum of 12 characters</li>
+					</ul>
+				</p>
+			</div>
+			<div style="text-align: center;">
+				<button type="submit" class="submit_button">REGISTER</button>
+			</div>
+		</form>
+	</div>
+	<script>
+	function togglePassword() {
+		var x = document.getElementById("password");
+		if(x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+	}
+	</script>
+</body>
+
+</html>

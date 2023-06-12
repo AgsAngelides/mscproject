@@ -1,0 +1,380 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+         body {
+         background-image: url("https://i.ibb.co/m9ZKDdt/12.jpg");
+         background-repeat: no-repeat;
+         background-size: cover;
+         }
+         .reg_frame {
+         margin-left: auto;
+         margin-right: auto;
+         top: 20px;
+         width: fit-content;
+         height: fit-content;
+         background: rgba(150, 142, 133, 0.7);
+         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+         border-radius: 10px;
+         padding: 30px;
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         margin: auto;
+         }
+         .field_title {
+         height: 25px;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 16px;
+         line-height: 19px;
+         color: #FFFFFF;
+         align-items: center;
+         }
+         .field_title::after {
+         content: " *";
+         color: #9D5135;
+         }
+         .alert {
+         width: 90%;
+         background-color: #f2dede;
+         border-color: #ebccd1;
+         color: #a94442;
+         padding: 8px;
+         margin-bottom: 15px;
+         margin-top: 15px;
+         font-family: 'Roboto';
+         font-size: 11px;
+         border: 1px solid transparent;
+         border-radius: 4px;
+         }
+         .box {
+         width: 100%;
+         padding-top: 15px;
+         }
+         .center_box {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         height: 100%;
+         }
+         .add_word {
+         height: 15px;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 12px;
+         line-height: 15px;
+         color: #FFFFFF;
+         border:none;
+         background-color: transparent;
+         margin-bottom: 40px;
+         margin-left: 10px;
+         }
+         .submit_button {
+         margin-left: auto;
+         margin-right: auto;
+         margin-top: 20px;
+         height: 34px;
+         background: #9D5135;
+         border-radius: 10px;
+         border: none;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 16px;
+         line-height: 19px;
+         color: #FFFFFF;
+         padding-left: 15px;
+         padding-right: 15px;
+         }
+         .reveal_passphrase {
+         height: 15px;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 12px;
+         line-height: 15px;
+         color: #FFFFFF;
+         background-color: transparent;
+         border: none;
+         text-decoration: underline;
+         }
+         .instructions_title {
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 14px;
+         line-height: 16px;
+         color: #FFFFFF;
+         margin-bottom: 10px;
+         }
+         .instructions {
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 300;
+         font-size: 14px;
+         line-height: 16px;
+         color: #FFFFFF;
+         margin-right: 20px;
+         }
+         .instructions_inner_border{
+         box-sizing: border-box;
+         border: 2px solid #FFFFFF;
+         width: 100%;
+         }
+         .instructions_outer_border{
+         box-sizing: border-box;
+         border: 2px solid #9D5135;
+         width: 100%;
+         }
+         input[type=email], input[type=password]:not([readonly]) {
+         width: 100%;
+         height: 34px;
+         border: none;
+         background-color: #FFFFFF;
+         border-radius: 10px;
+         padding-left: 10px;
+         }
+         input[type=email] {
+         color:#9D5135;
+         }
+         input[type=password]:not(:placeholder-shown) {
+         background-color: rgba(253, 79, 79, 0.6);
+         color: white;
+         }
+         input[type="password"]:valid {
+         background-color: rgba(0, 255, 148, 0.44);
+         color: white;
+         }
+         input[type="password"][readonly] {
+         background: #E09D1B;
+         font-weight: 700;
+         font-size: 16px;
+         text-align: center;
+         margin: 10px;
+         padding: 9px 5px 9px 5px;
+         width: 333px;
+         border: white 1px solid;
+         border-radius: 10px;
+         color: white;
+         font-family: 'Roboto';
+         }
+         input[type="text"][readonly] {
+         background: #E09D1B;
+         font-weight: 700;
+         font-size: 12px;
+         text-align: center;
+         margin: 10px;
+         padding: 11px 5px 11px 5px;
+         width: 333px;
+         border: white 1px solid;
+         border-radius: 10px;
+         color: white;
+         font-family: 'Roboto';
+         }
+         input:focus {
+         outline: none;
+         }
+         input:not(:read-only)::placeholder {
+         color: #9D5135;
+         font-style: italic;
+         font-family: 'Roboto';
+         padding-left: 10px;
+         padding: 0px;
+         }
+         input:read-only::placeholder {
+         color: white;
+         font-style: italic;
+         font-family: 'Roboto';
+         font-size: 12px;
+         font-weight: 100;
+         padding:5px;
+         }
+         input:-webkit-autofill {
+         -webkit-text-fill-color: #9D5135;
+         }
+         @media screen and (max-width: 600px) {
+         .reg_frame {
+         padding:10px;
+         }
+         }
+         @media screen and (max-width: 600px) {
+         input[type=email], input[type=password] {
+         box-sizing: border-box;
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="reg_frame">
+         <div class="center_box">
+            <form action="{{ url_for('register_2') }}" method="POST">
+               <div class="instructions_outer_border">
+                  <div class="instructions_inner_border">
+                     <ul>
+                        <div class="instructions_title">New user registration instructions:</div>
+                        <div class="instructions">
+                           <li>Every word must be 4 characters long.</li>
+                           <li>Every <u>additional</u> word field added must be populated</li>
+                        </div>
+                     </ul>
+                  </div>
+               </div>
+               {% if message is defined and message %}
+               <div class="alert alert-warning">{{ message }}</div>
+               <br>
+               {% endif %}
+               <br>
+               <div class="box">
+                  <label for="email" class="field_title">Email address</label>
+                  <br>
+                  <input type="email" id="email" name="email" placeholder="Please enter your email address" name="email">
+               </div>
+               <br><br><br>
+               <div class="box">
+                  <label for="word1" class="field_title">Word 1</label>
+                  <br>
+                  <input type="password" name="word1" id="word1" placeholder="Please enter a word of at least 4 characters" minlength="4" required/>
+               </div>
+               <br>
+               <div class="box">
+                  <label for="word2" class="field_title">Word 2</label>
+                  <br>
+                  <input type="password" name="word2" id="word2" placeholder="Please enter a word of at least 4 characters" minlength="4" required>
+               </div>
+               <br>
+               <div class="box">
+                  <label for="word3" class="field_title">Word 3</label>
+                  <br>
+                  <input type="password" name="word3" id="word3" placeholder="Please enter a word of at least 4 characters" minlength="4" required>
+               </div>
+               <br>
+               <div id="word-fields">
+                  {% for i in range(4, max_words + 1) %}
+                  <div class="box">
+                     <label for="word{{ i }}" class="field_title">Word {{ i }}</label>
+                     <input type="password" name="word{{ i }}" id="word{{ i }}" placeholder="word{{ i }}" minlength="word{{ i }}" required><br><br>
+                  </div>
+                  {% endfor %}
+               </div>
+         </div>
+         <button type="button" id="add-word" class="add_word">&#43; <u>Add more words</u></button>
+         <div class="center_box">
+         <input type="password" name="passphrase" id="passphrase" value="" placeholder="NOT YET AVAILABLE" readonly>
+         <button type="button" id="show-passphrase" class="reveal_passphrase">Click to reveal your passphrase</button>
+         <br><br>
+         <button type="submit" class="submit_button" value="submit">REGISTER</button>
+         </div>
+      </div>
+      </form>
+      </div>
+      <script>
+         // Add a new Word field when the "Add Word" button is clicked
+         const addWordButton = document.getElementById('add-word');
+         const wordFields = document.getElementById('word-fields');
+         let wordCount = 4;
+         const maxWords = 20;
+         
+         addWordButton.addEventListener('click', () => {
+         if (wordCount > maxWords) {
+             addWordButton.style.display = 'none';
+             return;
+         }
+         
+         // Create a new div element with the class "box"
+         const newBox = document.createElement('div');
+         newBox.setAttribute('class', 'box');
+         
+         const newLabel = document.createElement('label');
+         newLabel.setAttribute('for', `word${wordCount}`);
+         newLabel.setAttribute('class', `field_title`);
+         newLabel.innerText = `Word ${wordCount}:`;
+         
+         const newInput = document.createElement('input');
+         newInput.setAttribute('type', 'password');
+         newInput.setAttribute('name', `word${wordCount}`);
+         newInput.setAttribute('id', `word${wordCount}`);
+         newInput.setAttribute('placeholder', `Please enter a word of at least 4 characters`);
+         newInput.setAttribute('minlength', `4`);
+         newInput.setAttribute('required', true);
+         
+         // Append the new label and input elements to the new div element
+         newBox.appendChild(newLabel);
+         newBox.appendChild(document.createElement('br'));
+         newBox.appendChild(newInput);
+         newBox.appendChild(document.createElement('br'));
+         newBox.appendChild(document.createElement('br'));
+         
+         // Append the new div element to the wordFields element
+         wordFields.appendChild(newBox);
+         
+         wordCount++;
+         
+         if (wordCount > maxWords) {
+             addWordButton.style.display = 'none';
+         }
+         
+         // Update passphrase field whenever a word field is changed
+         const wordInputs = document.querySelectorAll('input[name^="word"]');
+         const passphraseField = document.getElementById('passphrase');
+         const showPassphraseButton = document.getElementById('show-passphrase');
+         
+         wordInputs.forEach(wordInput => {
+             wordInput.addEventListener('input', () => {
+             let words = '';
+             wordInputs.forEach(input => {
+                 words += input.value.trim() + ' ';
+             });
+             passphraseField.value = obfuscate(words.trim());
+             });
+         });
+         });
+         
+         // Update passphrase field whenever a word field is changed
+         const wordInputs = document.querySelectorAll('input[name^="word"]');
+         const passphraseField = document.getElementById('passphrase');
+         const showPassphraseButton = document.getElementById('show-passphrase');
+         
+         wordInputs.forEach(wordInput => {
+         wordInput.addEventListener('input', () => {
+             let words = '';
+             wordInputs.forEach(input => {
+             words += input.value.trim() + ' ';
+             });
+             passphraseField.value = obfuscate(words.trim());
+         });
+         });
+         
+         // Show/hide passphrase when "Show Passphrase" button is clicked
+         showPassphraseButton.addEventListener('click', () => {
+             if (passphraseField.type === 'password') {
+                 passphraseField.type = 'text';
+                 showPassphraseButton.innerHTML = 'Hide your passphrase';
+             } else {
+                 passphraseField.type = 'password';
+                 showPassphraseButton.innerHTML = 'Click to reveal your passphrase';
+             }
+             // Decode the obfuscated passphrase
+             passphraseField.value = deobfuscate(passphraseField.value.trim());
+         });
+         
+         // Helper function to obfuscate the passphrase
+         function obfuscate(str) {
+         return str;
+         }
+         
+         // Helper function to deobfuscate the passphrase
+         function deobfuscate(str) {
+         return str.replace(/&#(\d+);/g, function(match, dec) {
+             return String.fromCharCode(dec);
+         });
+         }
+      </script>
+   </body>
+</html>

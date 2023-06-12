@@ -1,0 +1,166 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	.container {
+		padding: 30px;
+	}
+	
+	.frame {
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-bottom: 50px;
+		padding-top: 25px;
+		width: 50%;
+		background: rgba(217, 217, 217, 0.8);
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+	
+	.title {
+		height: 25px;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 20px;
+		line-height: 23px;
+		color: #000000;
+	}
+	
+	.paragraph {
+		top: 519px;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 25px;
+		/* or 156% */
+	}
+	
+	.bold_text {
+		height: 59px;
+		padding-bottom: 15px;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 25px;
+		color: #000000;
+	}
+	
+	.submit_button {
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		height: 34px;
+		background: #9D5135;
+		border-radius: 10px;
+		border: none;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 19px;
+		color: #FFFFFF;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	
+	.form_label {
+		width: 49px;
+		height: 50px;
+		left: 630px;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 25px;
+		color: #000000;
+	}
+	
+	input[type="checkbox"] {
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		width: 16px;
+		height: 16px;
+		background-color: white;
+		outline: none;
+		vertical-align: middle;
+	}
+	
+	input[type="checkbox"]:checked::before {
+		content: "\2714";
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		text-align: center;
+		line-height: 16px;
+		font-size: 16px;
+		color: white;
+		background-color: #9D5135;
+		vertical-align: middle;
+	}
+	/* Styles for mobile browsers */
+	
+	@media screen and (max-width: 600px) {
+		.container {
+			padding: 0px;
+		}
+	}
+	
+	@media screen and (max-width: 600px) {
+		.frame {
+			width: 100%;
+			padding: 7px;
+			left: 0%;
+		}
+	}
+	</style>
+</head>
+
+<body>
+	<div class="container frame">
+		<h1 class="title">£50 Amazon Voucher Prize Draw Terms and Conditions</h1>
+		<br>
+		<div class="paragraph">
+			<p>One study participant, selected at random, will be awarded an Amazon Voucher worth £50 upon the conclusion of the experiment.</p>
+			<p>To qualify for the price draw, the following conditions must be met:
+				<ul>
+					<li>Only the participants who had completed all steps of the phases 1 and 2 of the experiment are eligible for entering the prize draw.</li>
+					<li>Opt-in for the prize draw is separate from the experiment’s Informed Consent opt-in. An individual can participate in the study without also participating in the prize draw.</li>
+					<li><b style="color:#9D5135">Please use your actual email address when registering, so you can be contacted if you are the winner.</b></li>
+				</ul>
+			</p>
+			<p>Other general points:
+				<ul>
+					<li>The incentive is privately funded by the research project’s Principal Investigator.</li>
+					<li>The winner will be chosen and notified via an email on or before the 8th of August, 2023.</li>
+					<li>If a winner is not able to confirm acceptance of the prize within 10 working days of being contacted by email, we reserve the right to randomly pick an alternative winner.</li>
+					<li>No cash alternatives will be available. We reserve the right to offer an alternative gift of similar specification and value should this be necessary.</li>
+					<li>Participants can withdraw from the prize draw by contacting the Principal Investigator on <b>
+                  <a href="mailto:aa21799@essex.ac.uk" style="color:#9D5135">aa21799@essex.ac.uk</a>
+                  </b>. When withdrawing from the prize draw, the participant will not be withdrawn from the study. If the participant wishes to withdraw from both, this should be specified when contacting the Principal Investigator. </li>
+					<li>Participants can exercise their ‘right to be forgotten’ as outlined in the UK’s Data Protection Act by contacting the email provided above. Such participants will be automatically withdrawn from the prize draw and the study.</li>
+					<li>If the participant withdraws from the study, they will also be withdrawn from the prize draw, since all their data will be removed, including any contact information.</li>
+					<li>Upon the conclusion of the study all Prize Draw entry email addresses will be securely disposed of as required by the UK’s Data Protection Act.</li>
+				</ul>
+			</p>
+		</div>
+		<p class="bold_text"> By ticking the box below, I acknowledge that I have read and fully understand the £50 Amazon Voucher Prize Draw Terms and Conditions. </p>
+		<form action="{{ url_for('prize_draw') }}" method="POST">
+			<input type="checkbox" id="prize-draw" name="prize-draw">
+			<label for="prize-draw" class="form_label"> I confirm I would like to participate in the prize draw.</label>
+			<br>
+			<br>
+			<div style="text-align: center;">
+				<input type="submit" class="submit_button" value="SUBMIT"> </div>
+		</form>
+	</div>
+</body>

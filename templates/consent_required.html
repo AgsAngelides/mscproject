@@ -1,0 +1,77 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+         .container {
+         padding: 30px;
+         background: #FFFFFF;
+         }
+         .frame {
+         padding-left: 15px;
+         padding-right: 15px;
+         padding-bottom: 50px;
+         padding-top: 25px;
+         width: 50%;
+         background: rgba(217, 217, 217, 0.8);
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         margin: auto;
+         }
+         .paragraph {
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 400;
+         font-size: 16px;
+         line-height: 25px;
+         }
+         .submit_button {
+         position: relative;
+         margin-left: auto;
+         margin-right: auto;
+         margin-top: 20px;
+         height: 34px;
+         background: #9D5135;
+         border-radius: 10px;
+         border: none;
+         font-family: 'Roboto';
+         font-style: normal;
+         font-weight: 700;
+         font-size: 16px;
+         line-height: 19px;
+         color: #FFFFFF;
+         padding-left: 15px;
+         padding-right: 15px;
+         }
+         /* Styles for mobile browsers */
+         @media screen and (max-width: 600px) {
+         .container {
+         padding: 0px;
+         }
+         }
+         @media screen and (max-width: 600px) {
+         .frame {
+         width: 100%;
+         padding: 7px;
+         left: 0%;
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container frame">
+         <div class="paragraph">
+            <p>You must consent to participating in this study before you can proceed to the next stage.</p>
+            <p>If you missed the consent confirmation box at the base of the previous page by mistake, please follow the link below to return to the previous page.</p>
+            <p>Since this study focuses on the UK's working age population, to participate in it, you must also be based in the UK.</p>
+         </div>
+         <form action="{{ url_for('consent') }}">
+            <div style="text-align: center;">
+               <input type="submit" class="submit_button" value="RETURN TO INFORMED CONSENT"/>
+            </div>
+         </form>
+      </div>
+   </body>
+</html>
